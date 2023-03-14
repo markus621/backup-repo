@@ -1,0 +1,26 @@
+package: backup-repo-app
+source: backup-repo
+version: 1:0.0.1
+architecture:
+    - amd64
+maintainer: DewepPro <git@dewep.pro>
+homepage: https://dewep.pro/
+description:
+    - GitHub repos backup
+section: utils
+priority: optional
+control:
+    depends:
+        - systemd
+        - ca-certificates
+    conffiles:
+        - /etc/backup-repo/config.yaml
+    preinst: scripts/preinst.sh
+    postinst: scripts/postinst.sh
+    prerm: scripts/prerm.sh
+    postrm: scripts/postrm.sh
+data:
+    bin/backup-repo: build/backup-repo_%arch%
+    etc/backup-repo/config.yaml: config/config.yaml
+    var/log/backup-repo.log: +EMPTY
+    etc/systemd/system/backup-repo.service: init/backup-repo.service

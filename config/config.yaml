@@ -1,0 +1,11 @@
+env: dev
+pid: ""
+level: 4
+log: /var/log/backup-repo.log
+
+api_key: "****"
+ssh_cert: "/root/.ssh/id_rsa"
+folder: /var/lib/backup-repo
+owners:
+  - user1
+  - org2
